@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="body_lifter_alpha">
+    <include>
+      <uri>model://four_wheeled_car</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://lifter</uri>
+      <pose>-0.1 0 0.35 0 0 3.1414</pose>
+    </include>
+
+    <joint name="lifter_joint_a" type="revolute">
+      <pose>-0.01 0.3 0.15 0 0 0</pose>
+      <child>lifter::holder_a</child>
+      <parent>four_wheeled_car::holder</parent>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>1.5707</upper>
+        </limit>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <joint name="lifter_joint_b" type="revolute">
+      <pose>-0.01 -0.3 0.15 0 0 0</pose>
+      <child>lifter::holder_b</child>
+      <parent>four_wheeled_car::holder</parent>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>1.5707</upper>
+        </limit>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+  </model>
+</sdf>

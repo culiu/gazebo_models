@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="body_lifter">
+    <include>
+      <uri>model://gripper</uri>
+      <pose>1.3 0 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://four_wheeled_car</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <joint name="arm_gripper_joint" type="revolute">
+      <parent>four_wheeled_car::chassis</parent>
+      <child>gripper::riser</child>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+  </model>
+</sdf>
+

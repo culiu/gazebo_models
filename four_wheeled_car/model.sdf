@@ -1,15 +1,25 @@
 <?xml version='1.0'?>
 <sdf version='1.4'>
-  <model name="body_lifter">
+  <model name="four_wheeled_car">
     <static>false</static>
 
     <link name='chassis'>
-      <pose>0 0 .1 0 0 0</pose>
+      <pose>0 0 .25 0 0 0</pose>
+
+      <inertial>
+        <mass>20.0</mass>
+        <pose>-0.1 0 -0.1 0 0 0</pose>
+        <inertia>
+          <ixx>0.5</ixx>
+          <iyy>1.0</iyy>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
 
       <collision name='collision'>
         <geometry>
           <box>
-            <size>.8 .4 .1</size>
+            <size>1 0.6 0.2</size>
           </box>
         </geometry>
       </collision>
@@ -17,19 +27,18 @@
       <visual name='visual'>
         <geometry>
           <box>
-            <size>.8 .4 .1</size>
+            <size>1 0.6 0.2</size>
           </box>
         </geometry>
       </visual>
-
    </link>
     
     <link name="left_wheel_A">
-      <pose>0.3 0.23 0.1 0 1.5707 1.5707</pose>
+      <pose>0.3 0.3 0.125 0 1.5707 1.5707</pose>
       <collision name="collision">
         <geometry>
           <cylinder>
-            <radius>.1</radius>
+            <radius>.125</radius>
             <length>.05</length>
           </cylinder>
         </geometry>
@@ -38,7 +47,7 @@
       <visual name="visual">
         <geometry>
           <cylinder>
-            <radius>.1</radius>
+            <radius>.125</radius>
             <length>.05</length>
           </cylinder>
         </geometry>
@@ -46,11 +55,11 @@
     </link>
 
     <link name="left_wheel_B">
-      <pose>-0.3 0.23 0.1 0 1.5707 1.5707</pose>
+      <pose>-0.3 0.3 0.125 0 1.5707 1.5707</pose>
       <collision name="collision">
         <geometry>
           <cylinder>
-            <radius>.1</radius>
+            <radius>.125</radius>
             <length>.05</length>
           </cylinder>
         </geometry>
@@ -59,7 +68,7 @@
       <visual name="visual">
         <geometry>
           <cylinder>
-            <radius>.1</radius>
+            <radius>.125</radius>
             <length>.05</length>
           </cylinder>
         </geometry>
@@ -67,11 +76,11 @@
     </link>
 
     <link name="right_wheel_A">
-      <pose>0.3 -0.23 0.1 0 1.5707 1.5707</pose>
+      <pose>0.3 -0.3 0.125 0 1.5707 1.5707</pose>
       <collision name="collision">
         <geometry>
           <cylinder>
-            <radius>.1</radius>
+            <radius>.125</radius>
             <length>.05</length>
           </cylinder>
         </geometry>
@@ -79,7 +88,7 @@
       <visual name="visual">
         <geometry>
           <cylinder>
-            <radius>.1</radius>
+            <radius>.125</radius>
             <length>.05</length>
           </cylinder>
         </geometry>
@@ -87,11 +96,11 @@
     </link>
 
     <link name="right_wheel_B">
-      <pose>-0.3 -0.23 0.1 0 1.5707 1.5707</pose>
+      <pose>-0.3 -0.3 0.125 0 1.5707 1.5707</pose>
       <collision name="collision">
         <geometry>
           <cylinder>
-            <radius>.1</radius>
+            <radius>.125</radius>
             <length>.05</length>
           </cylinder>
         </geometry>
@@ -99,12 +108,30 @@
       <visual name="visual">
         <geometry>
           <cylinder>
-            <radius>.1</radius>
+            <radius>.125</radius>
             <length>.05</length>
           </cylinder>
         </geometry>
       </visual>
     </link>
+
+    <link name="holder">
+      <pose>0.45 0 0.4 0 1.5707 1.5707</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.6</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.6</size>
+          </box>
+        </geometry>
+      </visual>
+    </link> 
 
     <joint type="revolute" name="left_wheel_hinge_A">
       <pose>0 0 -0.03 0 0 0</pose>
@@ -140,6 +167,12 @@
       <axis>
         <xyz>0 1 0</xyz>
       </axis>
+    </joint>
+
+    <joint type="fixed" name="fixed_hoder_joint">
+      <pose>0 0 0 0 0 0</pose>
+      <child>holder</child>
+      <parent>chassis</parent>
     </joint>
 
   </model>

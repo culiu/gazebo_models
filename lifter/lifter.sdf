@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="lifter">
+    <link name="back_plane">
+      <pose>0 0 0.05 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.8 0.6 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.1</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <link name="holder_a">
+      <pose>-0.4 0.35 0.05 0 -1.5707 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.4</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.4</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <link name="holder_b">
+      <pose>-0.4 -0.35 0.05 0 -1.5707 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.4</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.4</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="bar_1">
+      <pose>0.35 0.2 0.3 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.6</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.6</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="bar_2">
+      <pose>0.35 -0.2 0.3 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.6</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.6</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint type="fixed" name="bar_1_joint">
+      <pose>0 0 0.35 0 0 0</pose>
+      <child>bar_1</child>
+      <parent>back_plane</parent>
+    </joint>
+
+    <joint type="fixed" name="bar_2_joint">
+      <pose>0 0 0.35 0 0 0</pose>
+      <child>bar_2</child>
+      <parent>back_plane</parent>
+    </joint>
+
+    <joint type="fixed" name="holder_1_joint">
+      <pose>0 0 0 0 0 0</pose>
+      <child>holder_a</child>
+      <parent>back_plane</parent>
+    </joint>
+    
+    <joint type="fixed" name="holder_2_joint">
+      <pose>0 0 0 0 0 0</pose>
+      <child>holder_b</child>
+      <parent>back_plane</parent>
+    </joint>
+ 
+    <static>true</static>
+  </model>
+</sdf>
+
